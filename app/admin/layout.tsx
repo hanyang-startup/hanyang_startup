@@ -10,5 +10,9 @@ export default function AdminLayout({
 }: {
 	children: React.ReactNode;
 }) {
-	return <div className="min-h-screen bg-gray-50">{children}</div>;
+	return (
+		<div className="min-h-screen bg-gradient-to-br from-primary-light/10 via-white to-primary-light/20 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+			{children}
+		</div>
+	);
 }

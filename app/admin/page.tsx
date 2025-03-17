@@ -34,10 +34,10 @@ export default function AdminLoginPage() {
 	};
 
 	return (
-		<main className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-12">
-			<div className="container mx-auto px-4 max-w-md">
-				<div className="bg-white rounded-xl shadow-lg p-8 border border-gray-200">
-					<h1 className="text-2xl font-bold text-center text-blue-600 mb-6">
+		<main className="min-h-screen bg-gradient-to-br from-primary-light via-white to-primary-light/20 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+			<div className="max-w-md w-full">
+				<div className="text-center mb-8">
+					<h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">
 						관리자 로그인
 					</h1>
 

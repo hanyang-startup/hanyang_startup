@@ -161,125 +161,100 @@ export default function LecturePage({ params }: LecturePageProps) {
 
 	return (
 		<AdminAuthCheck>
-			<div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
-				<header className="bg-gradient-to-r from-blue-700 to-indigo-800 shadow-lg">
-					<div className="container mx-auto px-4 py-5 flex justify-between items-center">
-						<h1 className="text-2xl font-bold text-white flex items-center">
-							{isEditing ? (
-								<>
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										className="h-6 w-6 mr-2"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke="currentColor"
-									>
-										<path
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											strokeWidth={2}
-											d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-										/>
-									</svg>
-									강의 수정
-								</>
-							) : (
-								<>
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										className="h-6 w-6 mr-2"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke="currentColor"
-									>
-										<path
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											strokeWidth={2}
-											d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-										/>
-									</svg>
-									{`${lecture?.week}주차: ${lecture?.title}`}
-								</>
-							)}
-						</h1>
-						<div className="flex items-center space-x-4">
-							{!isEditing && (
-								<>
-									<button
-										onClick={() => setIsEditing(true)}
-										className="flex items-center text-white hover:text-blue-100 font-medium transition duration-200 ease-in-out"
-									>
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											className="h-5 w-5 mr-1"
-											fill="none"
-											viewBox="0 0 24 24"
-											stroke="currentColor"
+			<div className="min-h-screen">
+				<header className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-b border-gray-200/50 dark:border-gray-700/50">
+					<div className="container mx-auto px-6">
+						<div className="flex flex-col md:flex-row md:items-center md:justify-between py-6 space-y-4 md:space-y-0">
+							<div className="flex items-center space-x-4">
+								<div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-color to-primary-dark dark:from-primary-light dark:to-primary-color flex items-center justify-center text-white text-xl font-bold shadow-lg">
+									{isEditing ? "E" : "L"}
+								</div>
+								<div>
+									<h1 className="text-3xl font-bold bg-gradient-to-r from-primary-color to-primary-dark dark:from-primary-light dark:to-primary-color bg-clip-text text-transparent">
+										{isEditing
+											? "강의 수정"
+											: `${lecture?.week}주차: ${lecture?.title}`}
+									</h1>
+									<p className="text-gray-500 dark:text-gray-400 text-sm mt-1">
+										{isEditing ? "강의 정보를 수정합니다" : lecture?.date}
+									</p>
+								</div>
+							</div>
+
+							<div className="flex items-center space-x-4">
+								{!isEditing && (
+									<>
+										<button
+											onClick={() => setIsEditing(true)}
+											className="flex items-center bg-primary-color/10 hover:bg-primary-color dark:bg-primary-light/10 dark:hover:bg-primary-light text-primary-color hover:text-white dark:text-primary-light dark:hover:text-white px-5 py-2 rounded-xl font-medium transition-all duration-300 group"
 										>
-											<path
-												strokeLinecap="round"
-												strokeLinejoin="round"
-												strokeWidth={2}
-												d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-											/>
-										</svg>
-										강의 수정
-									</button>
-									<button
-										onClick={handleDelete}
-										className="flex items-center text-red-300 hover:text-red-100 font-medium transition duration-200 ease-in-out"
-									>
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											className="h-5 w-5 mr-1"
-											fill="none"
-											viewBox="0 0 24 24"
-											stroke="currentColor"
+											<svg
+												className="w-5 h-5 mr-2"
+												fill="none"
+												viewBox="0 0 24 24"
+												stroke="currentColor"
+											>
+												<path
+													strokeLinecap="round"
+													strokeLinejoin="round"
+													strokeWidth={2}
+													d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+												/>
+											</svg>
+											강의 수정
+										</button>
+										<button
+											onClick={handleDelete}
+											className="flex items-center bg-red-50 hover:bg-red-500 text-red-500 hover:text-white dark:bg-red-500/10 dark:hover:bg-red-500 dark:text-red-400 dark:hover:text-white px-5 py-2 rounded-xl font-medium transition-all duration-300 group"
 										>
-											<path
-												strokeLinecap="round"
-												strokeLinejoin="round"
-												strokeWidth={2}
-												d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-											/>
-										</svg>
-										강의 삭제
-									</button>
-								</>
-							)}
-							<Link
-								href="/admin/dashboard"
-								className="flex items-center text-white hover:text-blue-100 font-medium transition duration-200 ease-in-out"
-							>
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									className="h-5 w-5 mr-1"
-									fill="none"
-									viewBox="0 0 24 24"
-									stroke="currentColor"
+											<svg
+												className="w-5 h-5 mr-2"
+												fill="none"
+												viewBox="0 0 24 24"
+												stroke="currentColor"
+											>
+												<path
+													strokeLinecap="round"
+													strokeLinejoin="round"
+													strokeWidth={2}
+													d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+												/>
+											</svg>
+											강의 삭제
+										</button>
+									</>
+								)}
+								<Link
+									href="/admin/dashboard"
+									className="flex items-center bg-gray-100 hover:bg-gray-200 dark:bg-gray-700/50 dark:hover:bg-gray-700 text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white px-5 py-2 rounded-xl font-medium transition-all duration-300 group"
 								>
-									<path
-										strokeLinecap="round"
-										strokeLinejoin="round"
-										strokeWidth={2}
-										d="M10 19l-7-7m0 0l7-7m-7 7h18"
-									/>
-								</svg>
-								대시보드로 돌아가기
-							</Link>
+									<svg
+										className="w-5 h-5 mr-2 transition-transform group-hover:-translate-x-1"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke="currentColor"
+									>
+										<path
+											strokeLinecap="round"
+											strokeLinejoin="round"
+											strokeWidth={2}
+											d="M10 19l-7-7m0 0l7-7m-7 7h18"
+										/>
+									</svg>
+									대시보드
+								</Link>
+							</div>
 						</div>
 					</div>
 				</header>
 
-				<main className="container mx-auto px-4 py-8 max-w-5xl">
+				<main className="container mx-auto px-6 py-12 max-w-6xl mt-24">
 					{error && (
-						<div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-md mb-6">
+						<div className="bg-red-50 dark:bg-red-500/10 border-l-4 border-red-500 p-4 rounded-xl mb-8">
 							<div className="flex">
 								<div className="flex-shrink-0">
 									<svg
 										className="h-5 w-5 text-red-500"
-										xmlns="http://www.w3.org/2000/svg"
 										viewBox="0 0 20 20"
 										fill="currentColor"
 									>
@@ -291,15 +266,17 @@ export default function LecturePage({ params }: LecturePageProps) {
 									</svg>
 								</div>
 								<div className="ml-3">
-									<p className="text-sm text-red-700">{error}</p>
+									<p className="text-sm text-red-700 dark:text-red-400">
+										{error}
+									</p>
 								</div>
 							</div>
 						</div>
 					)}
 
 					{isEditing ? (
-						<div className="bg-white rounded-xl shadow-lg p-8 mb-8 transform transition-all duration-300 hover:shadow-xl">
-							<h2 className="text-xl font-semibold text-gray-800 mb-6 pb-3 border-b border-gray-200">
+						<div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] p-8 mb-8">
+							<h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-6 pb-4 border-b border-gray-200 dark:border-gray-700">
 								강의 정보 수정
 							</h2>
 
@@ -548,52 +525,52 @@ export default function LecturePage({ params }: LecturePageProps) {
 							</form>
 						</div>
 					) : (
-						<div className="bg-white rounded-xl shadow-lg p-8 mb-8 transform transition-all duration-300 hover:shadow-xl">
+						<div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] p-8 mb-8">
 							<div className="mb-6">
-								<div className="flex justify-between items-center mb-4">
-									<h2 className="text-xl font-semibold text-gray-800">
+								<div className="flex justify-between items-center mb-6">
+									<h2 className="text-2xl font-bold text-gray-800 dark:text-white">
 										강의 정보
 									</h2>
-									<div className="text-sm text-gray-500 bg-blue-50 px-3 py-1 rounded-full">
+									<div className="text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-4 py-2 rounded-xl">
 										{lecture?.date}
 									</div>
 								</div>
 
-								<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-									<div>
-										<h3 className="text-sm font-medium text-gray-500 mb-1">
+								<div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+									<div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-xl">
+										<h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">
 											주차
 										</h3>
-										<p className="text-lg font-medium text-gray-800">
+										<p className="text-xl font-medium text-gray-800 dark:text-white">
 											{lecture?.week}주차
 										</p>
 									</div>
-									<div>
-										<h3 className="text-sm font-medium text-gray-500 mb-1">
+									<div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-xl">
+										<h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">
 											제목
 										</h3>
-										<p className="text-lg font-medium text-gray-800">
+										<p className="text-xl font-medium text-gray-800 dark:text-white">
 											{lecture?.title}
 										</p>
 									</div>
 								</div>
 
 								{lecture?.summary && (
-									<div className="mb-6">
-										<h3 className="text-sm font-medium text-gray-500 mb-1">
+									<div className="mb-8">
+										<h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">
 											요약
 										</h3>
-										<p className="text-gray-700 bg-gray-50 p-3 rounded-lg">
+										<p className="text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700/50 p-6 rounded-xl">
 											{lecture.summary}
 										</p>
 									</div>
 								)}
 
 								<div>
-									<h3 className="text-sm font-medium text-gray-500 mb-1">
+									<h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">
 										강의 내용
 									</h3>
-									<div className="bg-gray-50 p-4 rounded-lg whitespace-pre-wrap text-gray-700">
+									<div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-xl whitespace-pre-wrap text-gray-700 dark:text-gray-300">
 										{lecture?.content}
 									</div>
 								</div>
@@ -602,86 +579,80 @@ export default function LecturePage({ params }: LecturePageProps) {
 					)}
 
 					{!isEditing && (
-						<>
-							<div className="bg-white rounded-xl shadow-lg p-8 mb-8">
-								<div className="flex justify-between items-center mb-6">
-									<h2 className="text-xl font-semibold text-gray-800">
-										수업 목록
-									</h2>
-									<button
-										onClick={() => setShowAddClass(!showAddClass)}
-										className="flex items-center text-blue-600 hover:text-blue-800 font-medium transition duration-200"
-									>
-										{showAddClass ? (
-											<>
-												<svg
-													xmlns="http://www.w3.org/2000/svg"
-													className="h-5 w-5 mr-1"
-													fill="none"
-													viewBox="0 0 24 24"
-													stroke="currentColor"
-												>
-													<path
-														strokeLinecap="round"
-														strokeLinejoin="round"
-														strokeWidth={2}
-														d="M6 18L18 6M6 6l12 12"
-													/>
-												</svg>
-												취소
-											</>
-										) : (
-											<>
-												<svg
-													xmlns="http://www.w3.org/2000/svg"
-													className="h-5 w-5 mr-1"
-													fill="none"
-													viewBox="0 0 24 24"
-													stroke="currentColor"
-												>
-													<path
-														strokeLinecap="round"
-														strokeLinejoin="round"
-														strokeWidth={2}
-														d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-													/>
-												</svg>
-												새 수업 추가
-											</>
-										)}
-									</button>
-								</div>
-
-								{showAddClass && (
-									<div className="mb-8 p-6 bg-blue-50 rounded-lg border border-blue-100">
-										<h3 className="text-lg font-medium text-blue-800 mb-4">
+						<div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] p-8">
+							<div className="flex justify-between items-center mb-8">
+								<h2 className="text-2xl font-bold text-gray-800 dark:text-white">
+									수업 목록
+								</h2>
+								<button
+									onClick={() => setShowAddClass(!showAddClass)}
+									className="flex items-center bg-primary-color/10 hover:bg-primary-color dark:bg-primary-light/10 dark:hover:bg-primary-light text-primary-color hover:text-white dark:text-primary-light dark:hover:text-white px-5 py-2 rounded-xl font-medium transition-all duration-300 group"
+								>
+									{showAddClass ? (
+										<>
+											<svg
+												className="w-5 h-5 mr-2"
+												fill="none"
+												viewBox="0 0 24 24"
+												stroke="currentColor"
+											>
+												<path
+													strokeLinecap="round"
+													strokeLinejoin="round"
+													strokeWidth={2}
+													d="M6 18L18 6M6 6l12 12"
+												/>
+											</svg>
+											취소
+										</>
+									) : (
+										<>
+											<svg
+												className="w-5 h-5 mr-2 transition-transform group-hover:rotate-12"
+												fill="none"
+												viewBox="0 0 24 24"
+												stroke="currentColor"
+											>
+												<path
+													strokeLinecap="round"
+													strokeLinejoin="round"
+													strokeWidth={2}
+													d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+												/>
+											</svg>
 											새 수업 추가
-										</h3>
-										<AddClassForm
-											lectureId={lectureId}
-											onSuccess={() => {
-												setShowAddClass(false);
-												// 강의 데이터 다시 불러오기
-												getLectureByWeek(lectureId).then((data) => {
-													if (data) setLecture(data);
-												});
-											}}
-										/>
-									</div>
-								)}
-
-								<ClassList
-									classes={lecture?.classes || []}
-									lectureId={lectureId}
-									onClassUpdated={() => {
-										// 강의 데이터 다시 불러오기
-										getLectureByWeek(lectureId).then((data) => {
-											if (data) setLecture(data);
-										});
-									}}
-								/>
+										</>
+									)}
+								</button>
 							</div>
-						</>
+
+							{showAddClass && (
+								<div className="mb-8 p-8 bg-primary-color/5 dark:bg-primary-light/5 rounded-xl border border-primary-color/10 dark:border-primary-light/10">
+									<h3 className="text-xl font-bold text-gray-800 dark:text-white mb-6">
+										새 수업 추가
+									</h3>
+									<AddClassForm
+										lectureId={lectureId}
+										onSuccess={() => {
+											setShowAddClass(false);
+											getLectureByWeek(lectureId).then((data) => {
+												if (data) setLecture(data);
+											});
+										}}
+									/>
+								</div>
+							)}
+
+							<ClassList
+								classes={lecture?.classes || []}
+								lectureId={lectureId}
+								onClassUpdated={() => {
+									getLectureByWeek(lectureId).then((data) => {
+										if (data) setLecture(data);
+									});
+								}}
+							/>
+						</div>
 					)}
 				</main>
 			</div>

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Link from "next/link";
 import "./globals.css";
+import Header from "@/components/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,39 +20,8 @@ export default function RootLayout({
 			<body
 				className={`${inter.className} bg-bg-light min-h-screen flex flex-col`}
 			>
-				<header className="bg-gradient-to-r from-primary-dark to-primary-color text-white py-6 shadow-md">
-					<div className="container mx-auto px-4">
-						<div className="flex justify-between items-center">
-							<Link
-								href="/"
-								className="text-2xl font-bold hover:text-white/90 transition-colors"
-							>
-								한양대학교 창업 강의
-							</Link>
-							<nav>
-								<ul className="flex space-x-6">
-									<li>
-										<Link
-											href="/"
-											className="hover:text-white/90 transition-colors flex items-center"
-										>
-											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												className="h-5 w-5 mr-1"
-												viewBox="0 0 20 20"
-												fill="currentColor"
-											>
-												<path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-											</svg>
-											홈
-										</Link>
-									</li>
-								</ul>
-							</nav>
-						</div>
-					</div>
-				</header>
-				<div className="flex-grow">{children}</div>
+				<Header />
+				<div className="flex-grow pt-24">{children}</div>
 				<footer className="bg-gray-800 text-white py-10 mt-auto">
 					<div className="container mx-auto px-4">
 						<div className="flex flex-col md:flex-row justify-between items-center">
