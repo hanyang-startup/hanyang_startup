@@ -21,3 +21,8 @@ export interface Lecture {
 
 // 강의 목록 타입
 export type LectureList = Lecture[];
+
+// 관리자 인증 타입
+export interface AdminAuth {
+	password: string;
+}
