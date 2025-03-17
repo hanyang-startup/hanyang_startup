@@ -1,0 +1,33 @@
+# 노드 모듈 및 패키지 관련 파일
+node_modules/
+package-lock.json
+
+# 빌드 및 캐시 파일
+.next/
+out/
+build/
+dist/
+.cache/
+
+# 환경 변수 및 비밀 파일
+.env
+.env.local
+.env.development
+.env.production
+.env.*
+
+# 로그 파일
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 시스템 파일
+.DS_Store
+Thumbs.db
+
+# 기타 불필요한 파일
+.vscode/
+.idea/
+*.swp
+*.swo 

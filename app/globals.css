@@ -1,0 +1,302 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--primary-color: #0051a1;
+	--primary-light: #e6f0fa;
+	--primary-dark: #003b78;
+	--accent-color: #e74c3c;
+	--accent-light: #fbeae9;
+	--accent-dark: #c0392b;
+	--text-primary: #333333;
+	--text-secondary: #555555;
+	--text-light: #777777;
+	--bg-light: #f5f7fa;
+	--bg-white: #ffffff;
+	--card-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+	--hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+	--border-radius: 10px;
+	--card-radius: 12px;
+	--badge-radius: 20px;
+	--transition-fast: all 0.2s ease;
+	--transition-normal: all 0.3s ease;
+	--header-height: 70px;
+	--content-width: 1200px;
+	--gap-small: 0.5rem;
+	--gap-medium: 1rem;
+	--gap-large: 2rem;
+	--font-size-small: 0.9rem;
+	--font-size-normal: 1rem;
+	--font-size-medium: 1.2rem;
+	--font-size-large: 1.5rem;
+	--font-size-xlarge: 2rem;
+	--font-size-xxlarge: 2.5rem;
+	--font-primary: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+		Roboto, "Helvetica Neue", Arial, sans-serif;
+	--font-secondary: "Noto Sans KR", sans-serif;
+	--line-height-normal: 1.6;
+	--line-height-small: 1.4;
+	--line-height-large: 1.8;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--foreground-rgb: 255, 255, 255;
+		--background-rgb: 30, 30, 30;
+		--primary-color: #60a5fa;
+		--secondary-color: #3b82f6;
+		--accent-color: #fbbf24;
+		--text-color: #f3f4f6;
+		--light-gray: #374151;
+		--medium-gray: #4b5563;
+		--dark-gray: #9ca3af;
+		--success-color: #34d399;
+		--warning-color: #fbbf24;
+		--danger-color: #f87171;
+	}
+}
+
+body {
+	color: var(--text-primary);
+	background: var(--bg-light);
+	font-family: var(--font-primary);
+	line-height: var(--line-height-normal);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* 공통 레이아웃 스타일 */
+.container {
+	width: 100%;
+	max-width: var(--content-width);
+	margin: 0 auto;
+	padding: 0 var(--gap-large);
+}
+
+/* 버튼 스타일 */
+.btn {
+	display: inline-block;
+	padding: 0.7rem 1.5rem;
+	border-radius: var(--border-radius);
+	font-weight: 500;
+	text-align: center;
+	cursor: pointer;
+	transition: var(--transition-fast);
+	background-color: var(--primary-color);
+	color: white;
+}
+
+.btn:hover {
+	background-color: var(--primary-dark);
+	transform: translateY(-2px);
+	box-shadow: var(--card-shadow);
+}
+
+/* 카드 스타일 */
+.card {
+	background-color: var(--bg-white);
+	border-radius: var(--card-radius);
+	box-shadow: var(--card-shadow);
+	overflow: hidden;
+	transition: var(--transition-normal);
+}
+
+.card:hover {
+	transform: translateY(-2px);
+	box-shadow: var(--hover-shadow);
+}
+
+/* 강의 목록 스타일 */
+.lecture-list {
+	display: grid;
+	gap: var(--gap-large);
+}
+
+/* 강의 아이템 스타일 */
+.lecture-item {
+	padding: var(--gap-large);
+	border-left: 4px solid var(--primary-color);
+}
+
+.lecture-item h3 {
+	font-size: var(--font-size-medium);
+	font-weight: 600;
+	margin-bottom: 0.5rem;
+}
+
+.lecture-item p {
+	color: var(--text-secondary);
+	margin-bottom: 0.5rem;
+}
+
+/* 수업 카드 스타일 */
+.class-card {
+	padding: var(--gap-large);
+	margin-bottom: var(--gap-medium);
+	border-left: 4px solid;
+}
+
+.class-card.low {
+	border-color: #10b981;
+	background-color: rgba(16, 185, 129, 0.1);
+}
+
+.class-card.normal {
+	border-color: var(--primary-color);
+	background-color: rgba(0, 81, 161, 0.1);
+}
+
+.class-card.high {
+	border-color: var(--accent-color);
+	background-color: rgba(231, 76, 60, 0.1);
+}
+
+/* 마크다운 스타일링 */
+.prose {
+	max-width: 65ch;
+	color: inherit;
+}
+
+.prose a {
+	color: var(--primary-color);
+	text-decoration: underline;
+}
+
+.prose strong {
+	font-weight: 600;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+	font-weight: 700;
+	margin-top: 1.5em;
+	margin-bottom: 0.5em;
+	color: var(--text-primary);
+}
+
+.prose h1 {
+	font-size: var(--font-size-xlarge);
+	border-bottom: 1px solid var(--text-light);
+	padding-bottom: 0.5rem;
+}
+
+.prose h2 {
+	font-size: var(--font-size-large);
+	border-bottom: 1px solid var(--text-light);
+	padding-bottom: 0.3rem;
+}
+
+.prose h3 {
+	font-size: var(--font-size-medium);
+}
+
+.prose p,
+.prose ul,
+.prose ol {
+	margin-bottom: 1em;
+}
+
+.prose ul,
+.prose ol {
+	padding-left: 1.5em;
+}
+
+.prose li {
+	margin-bottom: 0.25em;
+}
+
+.prose blockquote {
+	border-left: 4px solid var(--text-light);
+	padding-left: 1em;
+	font-style: italic;
+	margin: 1em 0;
+	color: var(--text-secondary);
+}
+
+.prose code {
+	background-color: var(--bg-light);
+	padding: 0.2em 0.4em;
+	border-radius: 0.25em;
+	font-size: 0.875em;
+	font-family: "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New",
+		monospace;
+}
+
+.prose pre {
+	background-color: #1f2937;
+	color: #f3f4f6;
+	padding: 1em;
+	border-radius: 0.375em;
+	overflow-x: auto;
+	margin: 1em 0;
+}
+
+.prose pre code {
+	background-color: transparent;
+	padding: 0;
+	font-size: 0.875em;
+}
+
+/* 반응형 디자인 */
+@media (min-width: 640px) {
+	.lecture-list {
+		grid-template-columns: repeat(1, 1fr);
+	}
+}
+
+@media (min-width: 768px) {
+	.lecture-list {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (min-width: 1024px) {
+	.lecture-list {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@layer utilities {
+	.text-balance {
+		text-wrap: balance;
+	}
+}
+
+/* 애니메이션 */
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.fade-in {
+	animation: fadeIn 0.5s ease forwards;
+}
+
+/* 유틸리티 클래스 */
+.text-primary-color {
+	color: var(--primary-color);
+}
+.bg-primary-color {
+	background-color: var(--primary-color);
+}
+.border-primary-color {
+	border-color: var(--primary-color);
+}
+.text-accent-color {
+	color: var(--accent-color);
+}
+.bg-accent-color {
+	background-color: var(--accent-color);
+}
+.border-accent-color {
+	border-color: var(--accent-color);
+}

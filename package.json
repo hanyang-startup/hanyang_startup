@@ -1,0 +1,31 @@
+{
+	"name": "hanyang-startup-lectures",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint",
+		"seed": "ts-node scripts/seed-data.ts"
+	},
+	"dependencies": {
+		"@supabase/supabase-js": "^2.39.7",
+		"next": "15.0.0",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-markdown": "^9.0.1"
+	},
+	"devDependencies": {
+		"@types/node": "^20",
+		"@types/react": "^18.2.0",
+		"@types/react-dom": "^18.2.0",
+		"autoprefixer": "^10.4.17",
+		"eslint": "^9.0.0",
+		"eslint-config-next": "15.0.0",
+		"postcss": "^8.4.35",
+		"tailwindcss": "^3.4.1",
+		"ts-node": "^10.9.2",
+		"typescript": "^5"
+	}
+}
